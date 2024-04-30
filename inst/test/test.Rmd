@@ -1,0 +1,44 @@
+---
+title: "Documentation"
+author: "Manuel Ordovás"
+date: "2024-04-30"
+output:
+  md_document:
+    variant: gfm
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+library(BitterCas)
+InitCAS(con = EnvCAS$currentConn, userDir = "~/Desktop/Projects/BitterCAS/inst/tmp/")
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+
+
+```{CAS display="block"}
+g1:U_R(t)=-R*I_C(t);
+g2:U_L(t)=-L*diff(I_C(t),t);
+g3:I_C(t)=C*diff(U_C(t),t);
+g4:U_L(t)+U_R(t)=U_C(t);
+quest:[
+   x+y=5,
+   y+z=3
+];
+solve(quest,[x,y,z]);
+
+P: [2*x - (a - 1)*y = 5*b, c + b*y + a*x = 0];
+augcoefmatrix(P, [x, y]);
+```
+
+
