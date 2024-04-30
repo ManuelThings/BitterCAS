@@ -8,20 +8,6 @@ This interface is initially only thought to be used from RMarkdown documents, bu
 
 ## Use:
 
-From a RMarkdown file, initialize the project and indicate the file location, temporary files will be saved in the same file location but within a tmp subfolder:
+From a RMarkdown file, initialize the project and indicate the file location, temporary files will be saved in the same file location but within a tmp subdirectory:
 
----
-title: "Documentation"
-author: "Manuel Ordovás"
-date: "2024-04-30"
-output:
-  md_document:
-    variant: gfm
-  html_document: default
----
-
-```{r setup, include=FALSE}
-devtools::load_all(".")
-InitCAS(con = EnvCAS$currentConn, userDir = "~/Desktop/Projects/BitterCAS/inst/tmp/")
-knitr::opts_chunk$set(echo = TRUE)
-```
+![](inst/init.png){style="with:100%;"}
