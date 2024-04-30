@@ -3,13 +3,11 @@ title: "Documentation"
 author: "Manuel Ordovás"
 date: "2024-04-30"
 output:
-  md_document:
-    variant: gfm
   html_document: default
 ---
 
 ```{r setup, include=FALSE}
-library(BitterCas)
+devtools::load_all()
 InitCAS(con = EnvCAS$currentConn, userDir = "~/Desktop/Projects/BitterCAS/inst/tmp/")
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -26,7 +24,7 @@ summary(cars)
 
 
 
-```{CAS display="block"}
+```{CAS display="inline"}
 g1:U_R(t)=-R*I_C(t);
 g2:U_L(t)=-L*diff(I_C(t),t);
 g3:I_C(t)=C*diff(U_C(t),t);
@@ -41,4 +39,13 @@ P: [2*x - (a - 1)*y = 5*b, c + b*y + a*x = 0];
 augcoefmatrix(P, [x, y]);
 ```
 
+I am taking a maxima variable from the previous chunk `r ICAS("g3;")` this will be displayed *inline*
+
+I can then apply compute calculations that wont be displayed (note ending with "$" and not in ";"), and the result will be shown in block:
+
+```{CAS display="block"}
+form: x/ sqrt (bˆ2 - xˆ2)$
+integrate(form, x);
+```
+And thats it
 

@@ -3,6 +3,7 @@
 export(EngineCAS)
 export(FindMaximaPort)
 export(GetTexOutput)
+export(ICAS)
 export(InitCAS)
 export(MaximaConnection)
 import(R.utils)

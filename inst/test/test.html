@@ -357,10 +357,6 @@ display: none;
 </div>
 
 
-<pre class="r"><code>devtools::load_all(&quot;.&quot;)</code></pre>
-<pre><code>## ℹ Loading BitterCAS</code></pre>
-<pre class="r"><code>InitCAS(con = EnvCAS$currentConn, userDir = &quot;~/Desktop/Projects/BitterCAS/inst/tmp/&quot;)
-knitr::opts_chunk$set(echo = TRUE)</code></pre>
 <div id="r-markdown" class="section level2">
 <h2>R Markdown</h2>
 <p>This is an R Markdown document. Markdown is a simple formatting
@@ -378,11 +374,11 @@ chunk like this:</p>
 ##  Mean   :15.4   Mean   : 42.98  
 ##  3rd Qu.:19.0   3rd Qu.: 56.00  
 ##  Max.   :25.0   Max.   :120.00</code></pre>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
 <mi>U_R</mi> <mfenced separators><mi>t</mi> </mfenced> <mo>=</mo>
 <mo>-</mo> <mi>R</mi> <mspace width="thinmathspace"></mspace><mi>I_C</mi>
 <mfenced separators><mi>t</mi> </mfenced> </math></br>
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
 <mi>U_L</mi> <mfenced separators><mi>t</mi> </mfenced> <mo>=</mo>
 <mo>-</mo> <mi>L</mi>
 <mspace width="thinmathspace"></mspace><mfenced separators>
@@ -390,29 +386,29 @@ chunk like this:</p>
 <mtext>ⅆ</mtext><mspace width="thinmathspace"></mspace> <mi>t</mi>
 </mrow></mfrac> <mspace width="thinmathspace"></mspace> <mi>I_C</mi>
 <mfenced separators><mi>t</mi> </mfenced> </mfenced>
-</math></br><math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+</math></br><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
 <mi>I_C</mi> <mfenced separators><mi>t</mi> </mfenced> <mo>=</mo>
 <mi>C</mi> <mspace width="thinmathspace"></mspace>
 <mfenced separators><mfrac><mrow><mtext>ⅆ</mtext> </mrow>
 <mrow><mtext>ⅆ</mtext> <mspace width="thinmathspace"></mspace><mi>t</mi>
 </mrow></mfrac> <mspace width="thinmathspace"></mspace><mi>U_C</mi>
 <mfenced separators> <mi>t</mi> </mfenced> </mfenced> </math></br>
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
 <mi>U_R</mi> <mfenced separators><mi>t</mi> </mfenced> <mo>+</mo>
 <mi>U_L</mi> <mfenced separators><mi>t</mi> </mfenced> <mo>=</mo>
 <mi>U_C</mi> <mfenced separators><mi>t</mi> </mfenced>
-</math></br><math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+</math></br><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
 <mfenced separators open="[" close="]"><mi>y</mi> <mo>+</mo>
 <mi>x</mi> <mo>=</mo> <mn>5</mn> <mo>,</mo><mi>z</mi> <mo>+</mo>
 <mi>y</mi> <mo>=</mo> <mn>3</mn> </mfenced> </math></br>
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
 <mfenced separators open="[" close="]">
 <mfenced separators open="[" close="]"><mi>x</mi> <mo>=</mo>
 <msub><mi>%r</mi> <mn>1</mn></msub> <mo>+</mo> <mn>2</mn> <mo>,</mo>
 <mi>y</mi> <mo>=</mo> <mn>3</mn> <mo>-</mo> <msub><mi>%r</mi>
 <mn>1</mn></msub> <mo>,</mo><mi>z</mi> <mo>=</mo> <msub><mi>%r</mi>
 <mn>1</mn></msub> </mfenced> </mfenced> </math></br>
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
 <mfenced separators open="[" close="]"><mn>2</mn>
 <mspace width="thinmathspace"></mspace><mi>x</mi> <mo>-</mo>
 <mfenced separators><mi>a</mi> <mo>-</mo> <mn>1</mn> </mfenced>
@@ -421,12 +417,30 @@ chunk like this:</p>
 <mspace width="thinmathspace"></mspace><mi>y</mi> <mo>+</mo> <mi>a</mi>
 <mspace width="thinmathspace"></mspace><mi>x</mi> <mo>+</mo> <mi>c</mi>
 <mo>=</mo> <mn>0</mn> </mfenced> </math></br>
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
 <mfenced separators open="(" close=")"><mtable><mtr><mtd> <mn>2</mn>
 </mtd><mtd><mn>1</mn> <mo>-</mo> <mi>a</mi> </mtd><mtd>
 <mo>-</mo><mn>5</mn> <mspace width="thinmathspace"></mspace><mi>b</mi>
 </mtd></mtr> <mtr><mtd><mi>a</mi> </mtd><mtd><mi>b</mi> </mtd><mtd>
 <mi>c</mi> </mtd></mtr> </mtable></mfenced> </math></p>
+<p>I am taking a maxima variable from the previous chunk
+<math display xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>I_C</mi> <mfenced separators><mi>t</mi> </mfenced> <mo>=</mo>
+<mi>C</mi>
+<mspace width="thinmathspace"></mspace><mfenced separators><mfrac><mrow>
+<mtext>ⅆ</mtext></mrow> <mrow>
+<mtext>ⅆ</mtext><mspace width="thinmathspace"></mspace> <mi>t</mi>
+</mrow></mfrac> <mspace width="thinmathspace"></mspace> <mi>U_C</mi>
+<mfenced separators><mi>t</mi> </mfenced> </mfenced> </math> this
+will be displayed <em>inline</em></p>
+<p>I can then apply compute calculations that wont be displayed (note
+ending with “$” and not in “;”), and the result will be shown in
+block:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<mfrac><mrow><msup><mrow><mi>x</mi> </mrow> <mn>2</mn> </msup> </mrow>
+<mrow><mn>2</mn> <mspace width="thinmathspace"></mspace><msqrt>
+<msub><mi>bˆ</mi> <mn>2</mn></msub> <mo>-</mo> <msub><mi>xˆ</mi>
+<mn>2</mn></msub> </msqrt></mrow></mfrac> </math> And thats it</p>
 </div>
 
 
