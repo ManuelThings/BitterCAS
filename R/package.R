@@ -11,8 +11,8 @@
 "_PACKAGE"
 #> [1] "_PACKAGE"
 
-maxEnv     <- new.env()
+EnvCAS     <- new.env()
 connection <- FindMaximaPort()
 con        <- MaximaConnection(con = connection$con, port = connection$port)
-maxEnv$currentConn <- con
-InitCAS(con = con, userDir = "~/Desktop/Projects/BitterCAS/inst/tmp/")
+EnvCAS$currentConn <- con
+

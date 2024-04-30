@@ -9,42 +9,34 @@ EngineCAS <- function(
     options = NULL
 ){
 
-  # This must be a parameter
-  fileLocation     <- "~/Desktop/Projects/BitterCAS/inst/test/test.Rmd"#knitr::current_input(dir = TRUE)
+  # Count number of mathml formuilas to add:
+  options$code <- paste0(options$code, collapse = "")
+  nformulas <- sum(charToRaw(options$code) == charToRaw(';'))
+  formNames <- paste0(
+    "mathml_",
+    formatC(seq_len(nformulas), width = 8, format = "d", flag = "0"),
+    ".mathml"
+  )
 
-  # Function only used once? REMOVE
-  maximaData <- function(fileLocation, code) {
-    fileDirectory <- dirname(fileLocation)
-    temporayDir  <- file.path(fileDirectory, 'tempMaxima')
-    if (dir.exists(temporayDir)) {
-      file.remove(list.files(temporayDir, full.names = TRUE))
-    } else {
-      dir.create(temporayDir)
-    }
-    maxEnv <- list()
-    maxEnv$fileLocation <- fileLocation
-    maxEnv$temporaryDir <- temporayDir
-    maxEnv$chunkCode    <- code
-    return(maxEnv)
+  for (i in seq_len(nformulas)) {
+    options$code <- sub(";", paste0('$with_stdout("', formNames[i],'", mathml_display(%))$'), options$code)
+
   }
 
-  # Clean the shit written down
-  mData <- maximaData(fileLocation, options$code)
-  pos <- which(grepl(";$", mData$chunkCode)) + 1L
-  savePaths <-file.path(mData$temporaryDir, paste0("mathml_", seq_along(pos), ".mathml"))
-  writeLine <- paste0('with_stdout("',savePaths, '", mathml_display(%))$')
-  mData$chunkCode <- R.utils::insert(mData$chunkCode, pos, writeLine)
+  # This must be a parameter
+  #fileLocation     <- "~/Desktop/Projects/BitterCAS/inst/test/test.Rmd"#knitr::current_input(dir = TRUE)
 
-  mData$chunkCode <- c('load("alt-display.mac");set_alt_display(2, mathml_display);',mData$chunkCode)
-  maximaCodeLines <- paste0(mData$chunkCode, collapse = "\n")
-  maximaCodeFile <- file.path(mData$temporaryDir, "rmax.max")
-  writeLines(maximaCodeLines, maximaCodeFile)
-  system2("maxima", args = c("-b", maximaCodeFile))
 
-  allfiles <- list.files(mData$temporaryDir, pattern = "^mathml.*[.]mathml$", full.names = TRUE)
-  alllines <- sapply(allfiles, function(x)paste0(readLines(x, warn = FALSE), collapse = "\n"))
-  chnk <- paste0(alllines, collapse = '')
-  chnk <- gsub('math xmlns', 'math display="inline" xlmns', chnk)
-  unlink(list.files(file.path(mData$temporaryDir), full.names = TRUE))
-  return(knitr::asis_output(chnk))
+  #chnk <- paste0(GetTexOutput(options$code, con = EnvCAS$currentConn), collapse = "")
+  readLines(con = EnvCAS$currentConn, ok = TRUE, warn = FALSE)
+  writeLines(options$code, con = EnvCAS$currentConn)
+  Sys.sleep(0.5)
+  readLines(con = EnvCAS$currentConn, ok = TRUE, warn = FALSE)
+  res <- sapply(list.files(EnvCAS$userDir, full.names = TRUE), function(x) {
+    paste0(readLines(x, warn = FALSE), collapse = "")
+  })
+  unlink(list.files(EnvCAS$userDir, full.names = TRUE))
+  res <- paste0(res, collapse = "</br>")
+  res <- gsub("math xmlns", paste0('math display="', options$display,'" xmlns'), res)
+  return(knitr::asis_output(res))
 }

@@ -7,7 +7,9 @@ InitCAS <- function(
   con,
   userDir
 ) {
-  writeLines(text = paste0('load("operatingsystem")$chdir("', userDir,'")$'),      con = con)
+  EnvCAS$userDir <- userDir
+  writeLines(text = paste0('load("operatingsystem")$chdir("', userDir,'")$'), con = con)
+  writeLines(text = paste0('load("alt-display.mac")$'),                       con = con)
   readLines(con = con, ok = TRUE, warn = FALSE)
   result <- NULL
 }
