@@ -1,0 +1,6 @@
+^renv$
+^renv\.lock$
+^BitterCAS\.Rproj$
+^\.Rproj\.user$
+^renv
+^LICENSE\.md$

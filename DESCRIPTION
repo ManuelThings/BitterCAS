@@ -1,0 +1,13 @@
+Package: BitterCAS
+Title:  BitterCAS - Minimal Interface to Maxima
+Version: 0.0.0.9000
+Authors@R: 
+    person("Manuel", "Ordovas", , "ordovasmanuel@gmail.com", role = c("aut", "cre"))
+Description:  R's Interface to Maxima. Add CAS (Computational Algebra System) capabilities to R.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+Imports: 
+      knitr, 
+      R.utils
