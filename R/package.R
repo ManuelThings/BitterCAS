@@ -15,4 +15,3 @@ EnvCAS     <- new.env()
 connection <- FindMaximaPort()
 con        <- MaximaConnection(con = connection$con, port = connection$port)
 EnvCAS$currentConn <- con
-

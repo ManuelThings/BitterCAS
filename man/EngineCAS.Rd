@@ -2,13 +2,13 @@
 % Please edit documentation in R/EngineCAS.R
 \name{EngineCAS}
 \alias{EngineCAS}
-\title{Internal only function, returns last command as latex}
+\title{CAS engine, ran by CAS code chunks.}
 \usage{
 EngineCAS(options = NULL)
 }
 \arguments{
-\item{options}{valid connection to maxima.}
+\item{options}{chunk options}
 }
 \description{
-Internal only function, returns last command as latex
+This function is only meant to be used in RMD files within chunks.
 }
