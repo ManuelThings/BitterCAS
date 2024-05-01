@@ -1,0 +1,58 @@
+---
+title: "ES - Parte 1 - Algebra Matricial"
+author: "Manuel Ordovás"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+devtools::load_all(".")
+InitCAS(con = EnvCAS$currentConn, userDir = "~/Desktop/Projects/BitterCAS/inst/Algebra/tmp/")
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Algebra Matricial - Parte 1
+
+### Contenido:
+
+En esta sección se estudiarán los siguientes conceptos:
+
+1.  Teoría Básica.
+
+2.  Operaciones Elementales.
+
+3.  Matriz Adjunta.
+
+4.  Matriz traspuesta.
+
+5.  Matriz inversa.
+
+### Teoría Básica:
+
+Una matriz $A_{m\times n}$ con sub-indices m=3 (filas) y n=4 (columnas):
+
+```{CAS display="block"}
+Expression1:A=genmatrix(a, 3, 4);
+```
+
+Será cuadrada siempre y cuando el número de filas y columnas sean iguales `r ICAS("B=genmatrix(b, 2, 2);")`, y será una matriz fila, siempre que exista una única fila y varias columns `r ICAS("B=genmatrix(b, 1, 2);")` y columna siempre que suceda lo contrario `r ICAS("B=genmatrix(b, 2, 1);")`.
+
+#### Algunas matrices especiales son:
+
+Matrices identidad, en la cual todos los elementos de su diagonal son 1 y el resto 0:
+
+```{CAS display="block"}
+Expression2:I1=ident(4);
+```
+
+Matrices nula, en la cual todos los elementos son 0:
+
+```{CAS display="block"}
+Expression3:N1=zeromatrix(4, 4);
+```
+
+Matrices simetrica, en la cual todos los elementos por debajo de la diagonal corresponden a los que estan por encima $M_{ij}=M_{ji}$:
+
+```{CAS display="block"}
+Expression4:M2=matrix([1, 2, 3, 4], [2, 9, 5, 6], [3, 5, 9, 3], [4, 6, 3, 9]);
+```
